@@ -1,4 +1,4 @@
-class _Node {
+class Node {
   constructor(data, next) {
     this.data = data;
     this.next = next;
@@ -10,18 +10,14 @@ class Stack {
     this.top = null;
   }
 
-  push(data) {
-    if (this.top === null) {
-      this.top = new _Node(data, null);
-      return this.top;
-    }
-    const node = new _Node(data, this.top);
-    this.top = node;
+  push(value) {
+    this.top = new Node(value, this.top);
+    return this;
   }
 
   pop() {
-    const node = this.top;
-    this.top = node.next;
-    return node.data;
+    const popped = this.top;
+    this.top = popped.next;
+    return popped.value;
   }
 }
